@@ -428,3 +428,53 @@
     }
 
 }
+
+/* ================================= */
+/* OVERRIDES POUR VISIBILITÉ (fix) */
+/* ================================= */
+
+/* Assure que les éléments avec la classe .reveal ne restent pas invisibles
+   si le JS de reveal ne tourne pas correctement. Les !important sont
+   utilisés ici uniquement pour corriger l'état bloqué. */
+.reveal {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* Applique la visibilité aux descendants (parfois les enfants restent opaques) */
+.reveal * {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Styles explicites pour rendre le texte lisible dans les sections concernées */
+.about-text,
+.skill-card,
+.timeline-content,
+.contact-info,
+.premium-card,
+.project-content {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Cas particulier pour la timeline (évite que le contenu soit translater/masqué) */
+.timeline-container .timeline-item .timeline-content {
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Empêche le curseur personnalisé de bloquer l'interaction ou de masquer des éléments */
+.cursor {
+    pointer-events: none;
+    z-index: 9999999;
+}
+
+/* Conserve la possibilité de masquer volontairement au départ via .reveal.hidden */
+.reveal.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+}

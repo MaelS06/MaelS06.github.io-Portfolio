@@ -1,0 +1,421 @@
+/* ================================= */
+/* SCROLL INDICATOR */
+/* ================================= */
+
+@keyframes scrollAnim {
+
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+}
+
+/* ================================= */
+/* REVEAL EFFECT */
+/* ================================= */
+
+.reveal {
+
+    opacity: 0;
+    transform:
+    translateY(50px);
+
+    transition:
+    opacity 0.8s ease-out,
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+
+}
+
+.reveal.active {
+
+    opacity: 1;
+    transform: translateY(0);
+
+}
+
+/* Délai progressif pour les éléments en grille ou liste */
+.premium-grid .reveal:nth-child(2) { transition-delay: 0.15s; }
+.premium-grid .reveal:nth-child(3) { transition-delay: 0.3s; }
+
+.timeline-container .reveal:nth-child(1) { transition-delay: 0.1s; }
+.timeline-container .reveal:nth-child(2) { transition-delay: 0.2s; }
+.timeline-container .reveal:nth-child(3) { transition-delay: 0.3s; }
+
+/* Pour la page projets */
+.projects-grid .reveal:nth-child(2n) { transition-delay: 0.1s; }
+.projects-grid .reveal:nth-child(3n) { transition-delay: 0.2s; }
+
+/* ================================= */
+/* LOADER */
+/* ================================= */
+
+.loader {
+
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+    radial-gradient(circle at center,
+    #0b0b0b,
+    #000);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999999;
+
+    animation: disappear 3s forwards;
+
+}
+
+.loader::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,240,255,0.15),
+    transparent 70%);
+
+    filter:blur(50px);
+
+    animation:loaderGlow 3s infinite alternate;
+
+}
+
+.loader h1 {
+
+    color: white;
+
+    letter-spacing: 8px;
+
+    font-size: 1rem;
+
+    font-weight:600;
+
+    text-transform: uppercase;
+
+    animation: pulse 1.8s infinite;
+
+    z-index:2;
+
+}
+
+@keyframes disappear {
+
+    0%, 80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+}
+
+@keyframes pulse {
+
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes loaderGlow{
+
+    from{
+        transform:scale(1);
+        opacity:0.3;
+    }
+
+    to{
+        transform:scale(1.4);
+        opacity:0.7;
+    }
+
+}
+
+/* ================================= */
+/* FADE */
+/* ================================= */
+
+.fade-in {
+
+    animation:
+    fadeIn 1.5s ease forwards;
+
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+/* ================================= */
+/* SLIDE */
+/* ================================= */
+
+.slide-up {
+
+    animation:
+    slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+
+}
+
+@keyframes slideUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+        translateY(100px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+/* ================================= */
+/* GLOW */
+/* ================================= */
+
+.glow {
+
+    animation:
+    glowEffect 3s infinite alternate;
+
+}
+
+@keyframes glowEffect {
+
+    from {
+
+        box-shadow:
+        0 0 10px rgba(0, 240, 255, 0.2);
+
+    }
+
+    to {
+
+        box-shadow:
+        0 0 40px rgba(0, 240, 255, 0.8),
+        0 0 80px rgba(123, 44, 255, 0.4);
+
+    }
+
+}
+
+/* ================================= */
+/* FLOATING */
+/* ================================= */
+
+.float {
+
+    animation:
+    floating 6s ease-in-out infinite;
+
+}
+
+@keyframes floating {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+/* ================================= */
+/* ROTATION */
+/* ================================= */
+
+.rotate {
+
+    animation:
+    rotateAnim 12s linear infinite;
+
+}
+
+@keyframes rotateAnim {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+/* ================================= */
+/* TEXT GRADIENT */
+/* ================================= */
+
+.text-gradient {
+
+    background:
+    linear-gradient(
+    90deg,
+    #00f0ff,
+    #7b2cff);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+/* ================================= */
+/* HOVER LIFT */
+/* ================================= */
+
+.hover-lift {
+
+    transition:
+
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+
+}
+
+.hover-lift:hover {
+
+    transform:
+    translateY(-12px);
+
+    box-shadow:
+    0 25px 50px rgba(0, 240, 255, 0.2);
+
+}
+
+/* ================================= */
+/* BLUR */
+/* ================================= */
+
+.blur-bg {
+
+    backdrop-filter: blur(20px);
+
+}
+
+/* ================================= */
+/* ZOOM */
+/* ================================= */
+
+.zoom-hover {
+
+    overflow: hidden;
+
+}
+
+.zoom-hover img {
+
+    transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+.zoom-hover:hover img {
+
+    transform: scale(1.12);
+
+}
+
+/* ================================= */
+/* SHIMMER EFFECT */
+/* ================================= */
+
+.shimmer{
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.shimmer::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:50%;
+    height:100%;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.12),
+    transparent);
+
+    transform:skewX(-25deg);
+
+}
+
+.shimmer:hover::before{
+
+    animation:shimmerMove 1s;
+
+}
+
+@keyframes shimmerMove{
+
+    100%{
+        left:150%;
+    }
+
+}
